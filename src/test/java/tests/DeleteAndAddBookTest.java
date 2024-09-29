@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
-@Tag("DeleteBook")
+@Tag("AllTests")
 @DisplayName("Delete book from collection")
 public class DeleteAndAddBookTest extends TestBase{
     @Test
@@ -26,6 +26,7 @@ public class DeleteAndAddBookTest extends TestBase{
 
     }
     @Test
+    @Tag("DeleteBookAPI")
     public void deleteBookFromCollectionAPI ()
     {
         AuthComponent authorization = new AuthComponent();
@@ -39,6 +40,7 @@ public class DeleteAndAddBookTest extends TestBase{
         cartActions.deleteBookAPI();
     }
 
+    @Tag("Delete_book_with_API")
     @Test
     public void deleteBookFromCollection ()
     {

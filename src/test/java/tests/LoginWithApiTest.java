@@ -1,5 +1,6 @@
 package tests;
 
+import componentsAPI.AuthComponent;
 import models.AuthRequestModel;
 import models.ResponseModel;
 import org.junit.jupiter.api.DisplayName;
@@ -16,35 +17,21 @@ import static io.restassured.RestAssured.given;
 import static specs.ResponseRequestSpecs.requestSpec;
 import static specs.ResponseRequestSpecs.responseSpec200;
 
+@Tag("AllTests")
 @Tag("Login")
 @DisplayName("Login and profile test")
 public class LoginWithApiTest extends TestBase{
 
     AuthRequestModel authData = new AuthRequestModel();
+    AuthComponent authorizationAPI = new AuthComponent();
     @Test
     @DisplayName("Successful login via API")
     public void successfulLoginWithApiTest() {
         authData.setUserName("testAcc1");
         authData.setPassword("testAcc1_!%");
 
-        ResponseModel authResponse = step("Authorize via API", () ->
-                given(requestSpec)
-                        .body(authData)
-                        .when()
-                        .post("/Account/v1/Login")
-                        .then()
-                        .spec(responseSpec200)
-                        .extract().as(ResponseModel.class)
-
-
-        );
-
-        step("Set cookies and open profile page", () -> {
-            open("/favicon.ico");
-            getWebDriver().manage().addCookie(new Cookie("userID", authResponse.getUserId()));
-            getWebDriver().manage().addCookie(new Cookie("expires", authResponse.getExpires()));
-            getWebDriver().manage().addCookie(new Cookie("token", authResponse.getToken()));
-        });
+        step("Authorize via API", () ->
+                authorizationAPI.authorizeTestAPI());
 
         step("Verify username on profile page", () -> {
             open("/profile");

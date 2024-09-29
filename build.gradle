@@ -57,13 +57,23 @@ tasks.withType(Test) {
     }
 }
 
-task delete_book_test(type: Test) {
+task delete_book_test_API(type: Test) {
     useJUnitPlatform {
-        includeTags("DeleteBook")
+        includeTags("DeleteBookAPI")
+    }
+}
+task delete_book_API_UI(type: Test) {
+    useJUnitPlatform {
+        includeTags("Delete_book_with_API")
     }
 }
 task login_test(type: Test) {
     useJUnitPlatform {
         includeTags("Login")
+    }
+}
+task all_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("AllTests")
     }
 }
