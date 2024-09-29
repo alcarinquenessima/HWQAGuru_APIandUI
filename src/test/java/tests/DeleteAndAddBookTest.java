@@ -40,7 +40,7 @@ public class DeleteAndAddBookTest extends TestBase{
         cartActions.deleteBookAPI();
     }
 
-    @Tag("Delete_book_with_API")
+    @Tag("delete_book_API_UI")
     @Test
     public void deleteBookFromCollection ()
     {
