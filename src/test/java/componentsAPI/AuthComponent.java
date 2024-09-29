@@ -36,7 +36,7 @@ public class AuthComponent extends TestBase {
                         .extract().as(ResponseModel.class)
         );
         step("Open icon page", () -> {
-            open("/favicon.ico");
+            open("");
         });
         step("Set cookies and open profile page", () -> {
             getWebDriver().manage().addCookie(new Cookie("userID", authResponse.getUserId()));
