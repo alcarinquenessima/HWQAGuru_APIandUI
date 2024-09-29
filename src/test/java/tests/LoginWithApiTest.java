@@ -2,20 +2,14 @@ package tests;
 
 import componentsAPI.AuthComponent;
 import models.AuthRequestModel;
-import models.ResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
-import static specs.ResponseRequestSpecs.requestSpec;
-import static specs.ResponseRequestSpecs.responseSpec200;
 
 @Tag("AllTests")
 @Tag("Login")
