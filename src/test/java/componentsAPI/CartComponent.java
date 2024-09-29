@@ -11,7 +11,6 @@ public class CartComponent {
 
     private final ResponseModel authResponse;
 
-    // Конструктор
     public CartComponent(ResponseModel authResponse) {
         this.authResponse = authResponse;
     }

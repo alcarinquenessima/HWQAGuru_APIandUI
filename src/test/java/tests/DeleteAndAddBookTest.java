@@ -51,7 +51,6 @@ public class DeleteAndAddBookTest extends TestBase{
         CartComponent cartActions = new CartComponent(authResponse);
 
         step("API actions", () -> {
-            authorization.authorizeTestAPI();
             cartActions.deleteBookAPI();
             cartActions.addBookAPI();
         });

@@ -1,7 +1,6 @@
 package componentsUI;
 
 import com.codeborne.selenide.SelenideElement;
-import componentsAPI.AuthComponent;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -12,8 +11,6 @@ public class CartComponentUI {
     private final SelenideElement userBook = $("a[href='/profile?book=9781449365035']");
     private final SelenideElement deleteButton = $("#delete-record-undefined");
     private final SelenideElement confirmDeleteButton = $("#closeSmallModal-ok");
-
-    AuthComponent authorization = new AuthComponent();
 
     @Step ("Open user cart")
     public CartComponentUI openCart (){
