@@ -64,7 +64,7 @@ task delete_book_test_API(type: Test) {
 }
 task delete_book_API_UI(type: Test) {
     useJUnitPlatform {
-        includeTags("Delete_book_with_API")
+        includeTags("Delete_book_with_API_and_UI")
     }
 }
 task login_test(type: Test) {
