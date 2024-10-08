@@ -1,17 +1,17 @@
-package componentsAPI;
+package steps;
 
+import models.BookDataModel;
 import models.ResponseModel;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static java.lang.String.format;
 import static specs.ResponseRequestSpecs.*;
 
-public class CartComponent {
+public class CartStepsAPI {
 
     private final ResponseModel authResponse;
 
-    public CartComponent(ResponseModel authResponse) {
+    public CartStepsAPI(ResponseModel authResponse) {
         this.authResponse = authResponse;
     }
     public void deleteBookAPI() {
@@ -25,11 +25,10 @@ public class CartComponent {
                         .spec(responseSpec204)
         );
     }
-    public void addBookAPI() {
+    public void addBookAPI(String isbn) {
         String userId = authResponse.getUserId();
-        String isbn = "9781449365035";
-        String bookData = format("{\"userId\":\"%s\",\"collectionOfIsbns\":[{\"isbn\":\"%s\"}]}",
-                userId, isbn);
+        BookDataModel bookData = new BookDataModel(userId, isbn);
+
 
         step("Add book", () ->
                 given(requestSpec)

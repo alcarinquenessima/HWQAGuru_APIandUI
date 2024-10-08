@@ -1,4 +1,4 @@
-package componentsAPI;
+package steps;
 
 import models.AuthRequestModel;
 import models.ResponseModel;
@@ -16,7 +16,7 @@ import static specs.ResponseRequestSpecs.*;
 
 @Tag("AddBook")
 @DisplayName("Add book to the collection")
-public class AuthComponent extends TestBase {
+public class AuthStepsAPI extends TestBase {
 
     AuthRequestModel authData = new AuthRequestModel();
     private ResponseModel authResponse;

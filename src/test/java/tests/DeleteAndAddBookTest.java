@@ -1,8 +1,8 @@
 package tests;
 
-import componentsAPI.AuthComponent;
-import componentsAPI.CartComponent;
-import componentsUI.CartComponentUI;
+import steps.AuthStepsAPI;
+import steps.CartStepsAPI;
+import pages.ProfilePage;
 import models.ResponseModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -13,30 +13,32 @@ import static io.qameta.allure.Allure.step;
 @Tag("AllTests")
 @DisplayName("Delete book from collection")
 public class DeleteAndAddBookTest extends TestBase{
+    String isbn = System.getenv("BOOK_ISBN");
+
     @Test
     public void addBook ()
     {
-        AuthComponent authorization = new AuthComponent();
+        AuthStepsAPI authorization = new AuthStepsAPI();
         ResponseModel authResponse = authorization.authorizeTestAPI();
 
-        CartComponent cartActions = new CartComponent(authResponse);
+        CartStepsAPI cartActions = new CartStepsAPI(authResponse);
 
         authorization.authorizeTestAPI();
-        cartActions.addBookAPI();
+        cartActions.addBookAPI(isbn);
 
     }
     @Test
     @Tag("DeleteBookAPI")
     public void deleteBookFromCollectionAPI ()
     {
-        AuthComponent authorization = new AuthComponent();
+        AuthStepsAPI authorization = new AuthStepsAPI();
         ResponseModel authResponse = authorization.authorizeTestAPI();
 
-        CartComponent cartActions = new CartComponent(authResponse);
+        CartStepsAPI cartActions = new CartStepsAPI(authResponse);
 
         authorization.authorizeTestAPI();
         cartActions.deleteBookAPI();
-        cartActions.addBookAPI();
+        cartActions.addBookAPI(isbn);
         cartActions.deleteBookAPI();
     }
 
@@ -44,15 +46,15 @@ public class DeleteAndAddBookTest extends TestBase{
     @Test
     public void deleteBookFromCollection ()
     {
-        AuthComponent authorization = new AuthComponent();
-        CartComponentUI cartActionsUI = new CartComponentUI();
+        AuthStepsAPI authorization = new AuthStepsAPI();
+        ProfilePage cartActionsUI = new ProfilePage();
         ResponseModel authResponse = authorization.authorizeTestAPI();
 
-        CartComponent cartActions = new CartComponent(authResponse);
+        CartStepsAPI cartActions = new CartStepsAPI(authResponse);
 
         step("API actions", () -> {
             cartActions.deleteBookAPI();
-            cartActions.addBookAPI();
+            cartActions.addBookAPI(isbn);
         });
         step("UI actions", () -> {
         cartActionsUI.openCart()

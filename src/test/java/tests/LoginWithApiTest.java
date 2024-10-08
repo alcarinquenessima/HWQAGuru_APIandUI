@@ -1,6 +1,6 @@
 package tests;
 
-import componentsAPI.AuthComponent;
+import steps.AuthStepsAPI;
 import models.AuthRequestModel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -17,7 +17,7 @@ import static io.qameta.allure.Allure.step;
 public class LoginWithApiTest extends TestBase{
 
     AuthRequestModel authData = new AuthRequestModel();
-    AuthComponent authorizationAPI = new AuthComponent();
+    AuthStepsAPI authorizationAPI = new AuthStepsAPI();
     @Test
     @DisplayName("Successful login via API")
     public void successfulLoginWithApiTest() {
