@@ -13,7 +13,7 @@ import static io.qameta.allure.Allure.step;
 @Tag("AllTests")
 @DisplayName("Delete book from collection")
 public class DeleteAndAddBookTest extends TestBase{
-    String isbn = System.getenv("BOOK_ISBN");
+    String isbn = System.getProperty("BOOK_ISBN", "9781449365035");
 
     @Test
     public void addBook ()
