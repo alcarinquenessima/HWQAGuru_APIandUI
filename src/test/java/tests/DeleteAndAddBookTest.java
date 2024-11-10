@@ -58,7 +58,7 @@ public class DeleteAndAddBookTest extends TestBase{
         });
         step("UI actions", () -> {
         cartActionsUI.openCart()
-                     .checkBookInCart()
+                     .checkBookInCart(isbn)
                      .deleteBookInCart()
                      .confirmDeleteBook();
         });

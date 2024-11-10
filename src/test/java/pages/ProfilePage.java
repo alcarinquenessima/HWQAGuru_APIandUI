@@ -4,14 +4,18 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class ProfilePage {
-    private final SelenideElement userBook = $("a[href='/profile?book=9781449365035']");
     private final SelenideElement deleteButton = $("#delete-record-undefined");
     private final SelenideElement confirmDeleteButton = $("#closeSmallModal-ok");
 
+    @Step ("Gey book isbn")
+    public SelenideElement getUserBook(String isbn) {
+        return $("a[href='/profile?book=" + isbn + "']");
+    }
     @Step ("Open user cart")
     public ProfilePage openCart (){
         open("/profile");
@@ -19,8 +23,8 @@ public class ProfilePage {
     }
 
     @Step ("Check book in cart")
-    public ProfilePage checkBookInCart (){
-        userBook.shouldHave(text("Speaking JavaScript"));
+    public ProfilePage checkBookInCart (String isbn){
+        getUserBook(isbn).shouldBe(visible);
         return this;
     }
 
