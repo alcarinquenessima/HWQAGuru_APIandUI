@@ -21,7 +21,7 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         RestAssured.baseURI = "https://demoqa.com";
-        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.remote = System.getProperty("remote");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
